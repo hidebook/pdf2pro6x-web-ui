@@ -1,44 +1,59 @@
 ![app icon](src/main/icons/linux/128.png)
 
-# pdf2pro6x
-Convert PDF files to ProPresenter 6 Bundle files.
+# pdf2pro6x-web-ui
+Convert PDF files to ProPresenter 6 `.pro6x` bundles – now with a drag-and-drop Web UI.
 
-![screenshot windows](screenshots/screenshot_win.png)
+A web-based frontend for [P1zz4br0etch3n/pdf2pro6x](https://github.com/P1zz4br0etch3n/pdf2pro6x) using Flask and HTML5.
 
-![screenshot mac](screenshots/screenshot_mac.png)
+## Features
+- Drag & Drop PDF upload
+- Live progress bar with animated feedback
+- Visual feedback for success and styled error messages
+- Multi-file upload with individual or bulk download
+- Fully local processing, no cloud involved
 
-## Prerequisite
-pdf2pro6x uses pdf2image which is based on poppler, so make sure you have the latter installed.
+## Screenshot
+![screenshot](screenshots/web_ui_screenshot.png)
 
-See install instructions for [MacOS](https://formulae.brew.sh/formula/poppler) or [Windows](https://stackoverflow.com/a/60659237/7523613).
+## Requirements
+Make sure `poppler-utils` is installed (for `pdf2image`).
+- [Windows instructions](https://stackoverflow.com/a/60659237/7523613)
+- [macOS](https://formulae.brew.sh/formula/poppler)
 
-## Releases
-You can download an installer or the cli version for macos and windows from the
-[Releases](https://github.com/P1zz4br0etch3n/pdf2pro6x/releases) section.
+## Setup
+```bash
+# Clone the repo
+git clone https://github.com/hidebook/pdf2pro6x-web-ui.git
+cd pdf2pro6x-web-ui/web
 
-## Usage
-Just open the app, browse for a PDF file or paste its path and click `Convert`.
+# Create and activate a virtual environment (optional)
+python3 -m venv venv
+source venv/bin/activate
 
-## Development
-Unfortunately fbs only supports Python up to version 3.5. Make sure you have qt5 installed and added the bin directory to your PATH:
-```sh
-$ brew install qt5
-$ echo 'export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"' >> ~/.bashrc
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Run the web interface
+python app.py
 ```
-Then create a virtualenv, activate it and install the requirements:
-```sh
-$ pip install virtualenv
-$ virtualenv .venv
-$ source .venv/bin/activate
-$ pip install -r requirements.txt  # this can take a while...
-```
-Now you're ready to go.
 
-## Troubleshooting
-From macOS Big Sur the app window only pops up if the environment variable QT_MAC_WANTS_LAYER is set to "1".
+Then visit [http://localhost:8808](http://localhost:8808) in your browser.
 
-Also you will have to create following symlinks:
-```sh
-$ sudo ln -s /opt/homebrew/bin/pdfinfo /usr/local/bin/pdfinfo
-$ sudo ln -s /opt/homebrew/bin/pdftoppm /usr/local/bin/pdftoppm
+## File structure
 ```
+pdf2pro6x-web-ui/
+├── pdf2pro6x.py            # original CLI converter
+├── web/
+│   ├── app.py              # Flask app
+│   ├── converter.py        # handles conversion
+│   └── templates/index.html  # web UI
+```
+
+## Notes
+- Designed for local/offline use (LAN support)
+- Compatible with Linux, macOS, Raspberry Pi
+
+## License & Credits
+Based on [P1zz4br0etch3n/pdf2pro6x](https://github.com/P1zz4br0etch3n/pdf2pro6x)
+
+© 2025 by [hidebook](https://github.com/hidebook)
