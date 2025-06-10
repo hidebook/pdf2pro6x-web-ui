@@ -56,4 +56,4 @@ pdf2pro6x-web-ui/
 ## License & Credits
 Based on [P1zz4br0etch3n/pdf2pro6x](https://github.com/P1zz4br0etch3n/pdf2pro6x)
 
-© 2025 by [hidebook](https://github.com/hidebook)
+2025 by [hidebook](https://github.com/hidebook)
